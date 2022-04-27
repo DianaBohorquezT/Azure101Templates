@@ -20,6 +20,18 @@
         "vmSubnetPrefix": {
             "type": "string"
         }
+        ,
+        "routerIPAddress": {
+            "type": "string"
+        }
+        ,
+        "localAddressSpace": {
+            "type": "string"
+        }
+        ,
+        "sharedKey": {
+            "type": "string"
+        }
     },
     "functions": [],
     "variables": {},
