@@ -230,9 +230,9 @@
         "gatewaySubnetPrefix": "[steps('networking').vnet.subnets.subnet0.addressPrefix]",
         "bastionSubnetPrefix": "[steps('networking').vnet.subnets.subnet1.addressPrefix]",
         "vmSubnetPrefix": "[steps('networking').vnet.subnets.subnet2.addressPrefix]",
-        "routerIPAddress": "[steps('networking').vnet.routerIPAddress]",
-        "localAddressSpace": "[steps('networking').vnet.localAddressSpace]",
-        "sharedKey": "[steps('networking').vnet.sharedKey]",
+        "routerIPAddress": "[steps('networking').routerIPAddress]",
+        "localAddressSpace": "[steps('networking').localAddressSpace]",
+        "sharedKey": "[steps('networking').sharedKey]",
         "adminUsername": "[steps('vmcredentials').adminUsername]",
         "adminPassword": "[steps('vmcredentials').adminPassword.password]"                
       },
