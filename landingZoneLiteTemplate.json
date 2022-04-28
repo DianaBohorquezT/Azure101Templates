@@ -19,16 +19,13 @@
         },
         "vmSubnetPrefix": {
             "type": "string"
-        }
-        ,
+        },
         "routerIPAddress": {
             "type": "string"
-        }
-        ,
+        },
         "localAddressSpace": {
             "type": "string"
-        }
-        ,
+        },
         "sharedKey": {
             "type": "string"
         }
@@ -81,7 +78,7 @@
                 "displayName": "Azure PoC"
             },
             "properties": {
-                "publicIPAllocationMethod": "Dynamic"                
+                "publicIPAllocationMethod": "Dynamic"
             }
         },
         {
@@ -117,24 +114,24 @@
                 "enableBgp": true
             }
         },
-        {   
-            "name": "azure-poc-bastion-ip",         
-            "type": "Microsoft.Network/publicIpAddresses",   
-            "apiVersion": "2020-11-01",         
+        {
+            "name": "azure-poc-bastion-ip",
+            "type": "Microsoft.Network/publicIpAddresses",
+            "apiVersion": "2020-11-01",
             "location": "[resourceGroup().location]",
             "sku": {
                 "name": "Standard"
             },
             "properties": {
                 "publicIPAllocationMethod": "Static"
-            },            
+            },
             "tags": {
                 "Environment": "Azure PoC",
                 "Notes": "Delete after PoC/Pilot testing complete"
             }
         },
         {
-            "apiVersion": "2020-11-01",  
+            "apiVersion": "2020-11-01",
             "type": "Microsoft.Network/bastionHosts",
             "name": "azure-poc-bastion",
             "sku": {
@@ -168,11 +165,10 @@
                 "Notes": "Delete after PoC/Pilot testing complete"
             }
         },
-
         {
             "name": "azure-poc-nic",
             "type": "Microsoft.Network/networkInterfaces",
-            "apiVersion": "2020-11-01",  
+            "apiVersion": "2020-11-01",
             "location": "[resourceGroup().location]",
             "dependsOn": [
                 "[resourceId('Microsoft.Network/virtualNetworks', 'azure-poc-vnet')]"
@@ -273,7 +269,7 @@
                 "timeZoneId": "UTC",
                 "targetResourceId": "[resourceId('Microsoft.Compute/virtualMachines', 'azure-poc-vm')]",
                 "notificationSettings": {
-                    "status": "Disabled",                    
+                    "status": "Disabled",
                     "timeInMinutes": 30
                 }
             },
@@ -281,9 +277,43 @@
                 "Environment": "Azure PoC",
                 "Notes": "Delete after PoC/Pilot testing complete"
             }
-        }                   
+        },
+        {
+            "name": "azure-poc-localgw",
+            "type": "Microsoft.Network/localNetworkGateways",
+            "apiVersion": "2020-11-01",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "localNetworkAddressSpace": {
+                    "addressPrefixes": [
+                        "[parameters('localAddressSpace')]"
+                    ]
+                },
+                "gatewayIpAddress": "[parameters('routerIPAddress')]"
+            }
+        },
+        {
+            "apiVersion": "2020-11-01",
+            "name": "azure-poc-vpnconnection",
+            "type": "Microsoft.Network/connections",
+            "location": "[resourceGroup().location]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworkGateways/', 'azure-poc-vnetgw')]",
+                "[resourceId('Microsoft.Network/localNetworkGateways/', 'azure-poc-localgw')]"
+            ],
+            "properties": {
+                "virtualNetworkGateway1": {
+                    "id": "[resourceId('Microsoft.Network/virtualNetworkGateways', 'azure-poc-vnetgw')]"
+                },
+                "localNetworkGateway2": {
+                    "id": "[resourceId('Microsoft.Network/localNetworkGateways', 'azure-poc-localgw')]"
+                },
+                "connectionType": "IPsec",
+                "routingWeight": 10,
+                "sharedKey": "[parameters('sharedKey')]"
+            }
+        }
     ],
     "outputs": {
-        
     }
 }
