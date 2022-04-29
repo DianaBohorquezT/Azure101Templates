@@ -54,4 +54,3 @@ Complete the template parameters in order to deploy. Once the deployment has fin
 
 When these steps are ready you are all set to deploy your workload!
 
-Good luck!
