@@ -52,3 +52,6 @@ Complete the template parameters in order to deploy. Once the deployment has fin
 
   WARNING: Ping to Azure VMs is denied by default due to the Windows Firewall. For testing purposes, you can turn it off or add the ping rule into the firewall so that it is succesful. You can also test other protocols like RDP so that you don't need to modify the Firewall.
 
+When these steps are ready you are all set to deploy your workload!
+
+Good luck!
