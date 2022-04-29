@@ -8,7 +8,7 @@ The following template will help you deploy the minimal resources you need for d
 
 Keep in mind this template is intended just for a quick test and it is expected for you to delete the resources. Once the pilot is completed, a discussion about [Cloud Adoption Framework](https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/) needs to happen in order to account for best practices and have a well-architected Azure environment.
 
-## Prerequisits
+## Prerequisites
 
 Since the template will create a VPN connection to ONPREM, it is necessary to have someone who knows about your network on this conversation. This person will need to:
 
@@ -40,17 +40,15 @@ Complete the template parameters in order to deploy. Once the deployment has fin
    <img src=images/VPNGWpip.PNG/>
 
 - **The address space of the created VNET** Search for "azure-poc-vnet" on the Azure Search Bar. Open the Virtual Network and click on Address Space tab. You should be able to see here what is the address space as the following image shows
-  <img src=images/vnetAddSp.PNG/>
+   <img src=images/vnetAddSp.PNG/>
 
 - **The Shared Key** If you forgot what you chose during the deployment or want to change it, search for azure-poc-vpnconnection connection and choose Shared Key Tab on the left to retrieve the information. DO NOT share this key with anyone outside your organization. The following image is just illustrative and is not a real key on any environment:
-
- <img src=images/sharedKey.PNG/>
+   <img src=images/sharedKey.PNG/>
 
 2. Once the VPN configuration is done, make sure the status of the connection is "Connected". This might take a couple of minutes. For this, you can search for your VPN gateway "azure-poc-vnetgw" on the Azure search bar. Click on connections tab and make sure the current Status of the connection is "Connected"
 
 3. Open the virtual machine "azure-poc-vm" and connect to it by clicking on Connect > Bastion. Enter your username and password and a new tab on the browser should be opened with a session to the VM. You can test ping or any other protocol from this VM to your onprem devices.
-
-<img src=images/Bastion.PNG/>
+   <img src=images/Bastion.PNG/>
 
   WARNING: Ping to Azure VMs is denied by default due to the Windows Firewall. For testing purposes, you can turn it off or add the ping rule into the firewall so that it is succesful. You can also test other protocols like RDP so that you don't need to modify the Firewall.
 
