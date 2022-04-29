@@ -45,7 +45,8 @@ Complete the template parameters in order to deploy. Once the deployment has fin
 - **The Shared Key** If you forgot what you chose during the deployment or want to change it, search for azure-poc-vpnconnection connection and choose Shared Key Tab on the left to retrieve the information. DO NOT share this key with anyone outside your organization. The following image is just illustrative and is not a real key on any environment:
    <img src=images/sharedKey.PNG/>
 
-2. Once the VPN configuration is done, make sure the status of the connection is "Connected". This might take a couple of minutes. For this, you can search for your VPN gateway "azure-poc-vnetgw" on the Azure search bar. Click on connections tab and make sure the current Status of the connection is "Connected"
+2. Once the VPN configuration is done, make sure the status of the connection is "Connected". This might take a couple of minutes. For verifying, you can search for your VPN gateway "azure-poc-vnetgw" on the Azure search bar. Click on connections tab and make sure the current Status of the connection is "Connected"
+   <img src=images/Connection.PNG/>
 
 3. Open the virtual machine "azure-poc-vm" and connect to it by clicking on Connect > Bastion. Enter your username and password and a new tab on the browser should be opened with a session to the VM. You can test ping or any other protocol from this VM to your onprem devices.
    <img src=images/Bastion.PNG/>
