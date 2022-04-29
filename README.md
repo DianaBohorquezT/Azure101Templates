@@ -19,7 +19,7 @@ Since the template will create a VPN connection to ONPREM, it is necessary to ha
 
 ## Deployed Resources
 
-This template includes:
+This template deploys:
 
 - A virtual network that has three subnets: GatewaySubnet, AzureBastionSubnet, VirtualMachineSubnet
 - Virtual Network Gateway on Basic SKU which will be the terminating device on Azure environment. Click [here](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpngateways) to read more information about VPN Gateway.
@@ -27,5 +27,14 @@ This template includes:
 - An Azure Bastion that is a secure jumpbox for you to connect to the virtual machines deployed on VirtualMachineSubnet. Click [here](https://docs.microsoft.com/en-us/azure/bastion/bastion-overview) to read more about Azure Bastion.
 - A Windows virtual machine that will serve to test the connection between Azure and ONPREM.
 
+## Steps to follow in order to deploy successfully
+
+Click on the following button to open the template:
 
 [![Deploy To Azure](https://docs.microsoft.com/en-us/azure/templates/media/deploy-to-azure.svg)](https://portal.azure.com/#blade/Microsoft_Azure_CreateUIDef/CustomDeploymentBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FDianaBohorquezT%2FAzure101Templates%2Fmain%2FlandingZoneLiteTemplate.json/uiFormDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2FDianaBohorquezT%2FAzure101Templates%2Fmain%2FlandingZoneLiteUI.json)
+
+Complete the template parameters in order to deploy. Once the deployment has finished you can follow the next steps:
+
+1. Give your network engineer the following information in order to connect from ONPREM
+ - Public IP of your gateway. Search on the Search bar for "azure-poc-vnetgw", click on the resource and on the overview tab you should be able to see the Public IP at the bottom of the second column like the following image shows:
+   <img src=images/VPNGWpip.PNG/>
