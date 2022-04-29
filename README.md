@@ -12,7 +12,7 @@ Keep in mind this template is intended just for a quick test and it is expected 
 
 Since the template will create a VPN connection to ONPREM, it is necessary to have someone who knows about your network on this conversation. This person will need to:
 
-- Provide an address space for Azure that will not overlap with current ONPREM environment. We have selected by default 10.11.0.0/16 but you can customize it if needed
+- Provide an address space for Azure that will not overlap with current ONPREM environment. We have selected one by default, but you can customize it if needed
 - Decide an Edge device to be connected to: We need the public IP fo this device and the address space that you intend to reach onprem.
 - Select key (password) that both Azure VPN and ONPREM VPN will share to recognize each other
 - Once the deployment is ready on Azure, this person will need to configure the onprem connection side
@@ -36,5 +36,12 @@ Click on the following button to open the template:
 Complete the template parameters in order to deploy. Once the deployment has finished you can follow the next steps:
 
 1. Give your network engineer the following information in order to connect from ONPREM
- - Public IP of your gateway. Search on the Search bar for "azure-poc-vnetgw", click on the resource and on the overview tab you should be able to see the Public IP at the bottom of the second column like the following image shows:
+ - **Public IP of your gateway** Search on the Search bar for "azure-poc-vnetgw", click on the resource and on the overview tab you should be able to see the Public IP at the bottom of the second column like the following image shows:
    <img src=images/VPNGWpip.PNG/>
+
+- **The address space of the created VNET** Search for azure-poc-vnet on the Azure Search Bar. Open the Virtual Network and click on Address Space tab. You should be able to see what is the address space here as the following image shows
+  <img src=images/vnetAddSp.PNG/>
+
+-**The Shared Key** If you forgot what you choose during the deployment, or want to change it search for azure-poc-vpnconnection connection and choose Shared Key Tab on the left to retrieve the information. DO NOT share this key with anyone outside your organization. The following image is just illustrative and is not a real key on any environment:
+
+ <img src=images/sharedKey.PNG/>
