@@ -113,11 +113,7 @@
                     "tier": "Basic"
                 },
                 "gatewayType": "Vpn",
-<<<<<<< HEAD
                 "vpnType": "[parameters('vpnType')]",
-=======
-                "vpnType": "RouteBased",
->>>>>>> 52fa79b045be63a7feb1b49df598012744cf02e0
                 "enableBgp": true
             }
         },
