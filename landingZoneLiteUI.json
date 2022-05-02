@@ -124,7 +124,7 @@
               "visible": true,
               "options": {
                 "icon": "Info",
-                "text": "To provision the necessary Local Gateway components, please provide the following information.\n - The public IP Address of your on-premise router\n - The address space that will be allowed on your on premise router.\n - Shared Key to configure and secure the VPN connection"                
+                "text": "To provision the necessary Local Gateway components, please provide the following information.\n - The public IP Address of your on-premise router\n - The address space that will be allowed on your on premise router.\n - The VPN Policy Type \n - Shared Key to configure and secure the VPN connection"                
               }
             },
             {
@@ -146,6 +146,26 @@
               "defaultValue": "",
               "toolTip": "",
               "constraints": {
+                "required": true
+              }
+            },
+            {
+              "name": "vpnType",
+              "type": "Microsoft.Common.OptionsGroup",
+              "label": "VPN type",
+              "defaultValue": "Route-based",
+              "toolTip": "The type of VPN you can choose depends on the make and model of your VPN device, and the kind of VPN connection you intend to create. Choose a route-based gateway if you intend to use point-to-site, inter-virtual network, or multiple site-to-site connections; if you are creating a VPN type gateway to coexist with an ExpressRoute gateway; or if you need to use IKEv2. Policy-based gateways support only IKEv1.",
+              "constraints": {
+                "allowedValues": [
+                  {
+                    "label": "Route-based",
+                    "value": "RouteBased"
+                  },
+                  {
+                    "label": "Policy-based",
+                    "value": "PolicyBased"
+                  }
+                ],
                 "required": true
               }
             },
@@ -232,6 +252,7 @@
         "vmSubnetPrefix": "[steps('networking').vnet.subnets.subnet2.addressPrefix]",
         "routerIPAddress": "[steps('networking').routerIPAddress]",
         "localAddressSpace": "[steps('networking').localAddressSpace]",
+        "vpnType": "[steps('networking').vpnType]",
         "sharedKey": "[steps('networking').sharedKey]",
         "adminUsername": "[steps('vmcredentials').adminUsername]",
         "adminPassword": "[steps('vmcredentials').adminPassword.password]"                

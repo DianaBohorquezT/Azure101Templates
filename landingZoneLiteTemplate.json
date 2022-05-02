@@ -25,6 +25,9 @@
         },
         "localAddressSpace": {
             "type": "string"
+        },        
+        "vpnType": {
+            "type": "string"
         },
         "sharedKey": {
             "type": "string"
@@ -110,7 +113,7 @@
                     "tier": "Basic"
                 },
                 "gatewayType": "Vpn",
-                "vpnType": "PolicyBased",
+                "vpnType": "[parameters('vpnType')]",
                 "enableBgp": true
             }
         },
